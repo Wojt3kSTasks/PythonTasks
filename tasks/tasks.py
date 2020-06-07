@@ -176,10 +176,87 @@ def exercise15():
     print("Percent of C and G equals ", pecentOfCAndG, "%", sep="")
 
 
-# def exercise16():
-# def exercise17():
+# Write a Python function that checks whether a passed string is palindrome or not
+def exercise16():
+    def palindromeCheck():
+        print("Enter text to check if it's palindrome:")
+        stringToCheck = input()
+        isPalindrome = True
+        lower = stringToCheck.lower()
+        j = len(stringToCheck)
+        for i in range(int(len(lower) / 2)):
+            j -= 1
+            if lower[i] != lower[j]:
+                isPalindrome = False
+                break
+        if isPalindrome:
+            print("Text:", stringToCheck, "is palindrome")
+        else:
+            print("Text:", stringToCheck, "is not palindrome")
+
+    palindromeCheck()
+
+
+# Write a Python program using Python function that print the triangle numbers from
+# randomly generated list of 50 elements in the range of 1-1000
+def exercise17():
+    def generateTriangleNumbersTo1000():
+        triangleNumbers = []
+        i = 0
+        actualNumber = 0
+        while actualNumber <= 1000:
+            triangleNumbers.append(actualNumber)
+            i += 1
+            actualNumber += i
+        return triangleNumbers
+
+    def generateRandomNumbersList():
+        randomNumbers = []
+        for i in range(50):
+            randomNumbers.append(random.randint(1, 1000))
+        return randomNumbers
+
+    triangleNumbers = generateTriangleNumbersTo1000()
+    randomNumbers = generateRandomNumbersList()
+    resultList = []
+    for number in randomNumbers:
+        if number in triangleNumbers:
+            resultList.append(number)
+    print("In list:", randomNumbers, "\nfollowing numbers are triangle numbers:", resultList)
+
+
 # def exercise18():
-# def exercise19():
+
+# Write a Python program using Python functions that generates 300 randomly generated strings,
+# utilizing capitals characters only, each of the string has to have 50 characters, save them to the file mutant.txt then
+# read them from the file and calculate the sum of all the ASCI codes which are contained in each string
+def exerciseMUTANT():
+    def generateRandomStrings():
+        randomStrings = []
+        for i in range(300):
+            randomString = ""
+            for i in range(50):
+                randomString += chr(random.randint(65, 90))
+            randomStrings.append(randomString)
+        file = open("mutant.txt", "w")
+        for string in randomStrings:
+            file.writelines(string + "\n")
+
+    def calculateSumOfASCICodes():
+        file = open("mutant.txt", "r")
+        sumOfASCICodes = []
+        for i in range(300):
+            string = file.readline()
+            sumOfASCICode = 0
+            for j in range(50):
+                sumOfASCICode += ord(string[j])
+            sumOfASCICodes.append(sumOfASCICode)
+        return sumOfASCICodes
+
+    generateRandomStrings()
+    print("Sums of ASCI codes of random generated strings:", calculateSumOfASCICodes())
+
+
+exerciseMUTANT()
 # def exercise20():
 # def exercise21():
-# def exercise22():
