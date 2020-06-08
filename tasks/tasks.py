@@ -1,9 +1,7 @@
-import math
-
-# Evaluate the quadratic equation for a given a, b, and c
 import random
 
 
+# Evaluate the quadratic equation for a given a, b, and c
 def exercise1():
     print("Enter a:")
     a = int(input())
@@ -42,8 +40,8 @@ def exercise4():
     print("Enter the number for calculating the factorial")
     number = int(input())
     result = 1
-    for i in range(number, 1, -1):
-        result *= i
+    for i in range(number, 0, -1):
+        result *= i  # result = result * i
     print("Factorial of", number, "equals", result)
 
 
@@ -60,12 +58,12 @@ def exercise5():
 
 # Write code to display all the prime numbers from the range of 1-100
 def exercise6():
-    primeNumbers = []
+    primeNumbers = [2, ]
     for i in range(2, 101, 1):
-        for j in range(2, int(math.sqrt(i)) + 2):
+        for j in range(2, i):
             if (i % j) == 0:
                 break
-            elif (int(math.sqrt(i)) + 1) == j:
+            elif (i - 1) == j:
                 primeNumbers.append(i)
     print(primeNumbers)
 
@@ -73,11 +71,9 @@ def exercise6():
 # Write code to display and count the numbers of the all the even number in the range of 1-200
 def exercise7():
     evenNumbers = []
-    numberOfEvenNumbers = 0
     for i in range(2, 201, 2):
         evenNumbers.append(i)
-        numberOfEvenNumbers += 1
-    print("In range 1 - 200 there are", numberOfEvenNumbers, "even numbers:", evenNumbers)
+    print("In range 1 - 200 there are", len(evenNumbers), "even numbers:", evenNumbers)
 
 
 # Write a program that performs a rotation cypher
@@ -85,8 +81,13 @@ def exercise8():
     print("Enter word to code")
     toCode = input()
     coded = ""
-    for c in toCode:
-        coded += chr(ord(c) + 1)
+    for letter in toCode:
+        if letter == 'Z':
+            coded += 'A'
+        elif letter == 'z':
+            coded += 'a'
+        else:
+            coded += chr(ord(letter) + 1)
     print("Your word coded:", coded)
 
 
@@ -119,15 +120,13 @@ def exercise10():
 # Write a program that calculates how many numbers in the randomly generated list of 100 elements are smaller than 23
 def exercise11():
     randomList = []
-    howManySmallerThan23 = 0
     smallerThan23 = []
     for i in range(100):
         randomList.append(random.randint(1, 100))
     for number in randomList:
         if number < 23:
-            howManySmallerThan23 += 1
             smallerThan23.append(number)
-    print("In list:", randomList, "\nthere are", howManySmallerThan23, "numbers smaller than 23:", smallerThan23)
+    print("In list:", randomList, "\nthere are", len(smallerThan23), "numbers smaller than 23:", smallerThan23)
 
 
 # Write a python program to calculate the sum of all numbers raised to the square in the tuple
@@ -156,7 +155,7 @@ def exercise14():
     items = {"item 1": 45.50, "item 2": 35, "item 3": 41.30, "item 4": 55, "item 5 ": 24}
     sortedItems = sorted(items, key=items.get, reverse=True)
     print("Top 3 items:")
-    for i in range(3):
+    for i in range(0, 3, 1):
         print(sortedItems[i], items[sortedItems[i]])
 
 
@@ -166,14 +165,14 @@ def exercise15():
     numberOfLetters = 0.0
     numberOfC = 0.0
     numberOfG = 0.0
-    for c in file.read():
+    for letter in file.read():
         numberOfLetters += 1
-        if c == "C":
+        if letter == "C":
             numberOfC += 1
-        if c == "G":
+        if letter == "G":
             numberOfG += 1
-    pecentOfCAndG = int(round((numberOfC + numberOfG) / numberOfLetters * 100, 0))
-    print("Percent of C and G equals ", pecentOfCAndG, "%", sep="")
+    percentOfCAndG = int(round((numberOfC + numberOfG) / numberOfLetters * 100, 0))
+    print("Percent of C and G equals ", percentOfCAndG, "%", sep="")
 
 
 # Write a Python function that checks whether a passed string is palindrome or not
@@ -225,7 +224,16 @@ def exercise17():
     print("In list:", randomNumbers, "\nfollowing numbers are triangle numbers:", resultList)
 
 
-# def exercise18():
+# Write a Python program using Python function that converts in given text symbols of emojis :) to 😃 and :( to 😞. Please
+# try to utilize the data structure such as the dictionary
+def exercise18():
+    emojis = {":D": "\U0001F603", ">.<": "\U0001F606", ":)": "\U0001F642", "(:": "\U0001F643", ";)": "\U0001F609",
+              "^_^": "\U0001F60A",
+              ":*": "\U0001F618", ":|": "\U0001F610", ":(": "\U0001F641", "8-)": "\U0001F60E"}
+    print("Enter your emoji")
+    emoji = input()
+    print("Your emoji converted:", emojis[emoji])
+
 
 # Write a Python program using Python functions that generates 300 randomly generated strings,
 # utilizing capitals characters only, each of the string has to have 50 characters, save them to the file mutant.txt then
@@ -257,6 +265,26 @@ def exerciseMUTANT():
     print("Sums of ASCI codes of random generated strings:", calculateSumOfASCICodes())
 
 
-exerciseMUTANT()
-# def exercise20():
-# def exercise21():
+def exercise19Basic():
+    print("Specify sizes of matrixes you want to add")
+    print("Enter M:")
+    m = int(input())
+    print("Enter N:")
+    n = int(input())
+    matrixes = []
+    for i in range(2):
+        matrix = []
+        for j in range(m):
+            row = []
+            for k in range(n):
+                row.append(random.randint(1, 4))
+            matrix.append(row)
+        matrixes.append(matrix)
+    matrix = []
+    for i in range(len(matrixes[0])):
+        row = []
+        for j in range(len(matrixes[0][0])):
+            row.append(matrixes[0][i][j] + matrixes[1][i][j])
+        matrix.append(row)
+    matrixes.append(matrix)
+    print(matrixes[0], "+", matrixes[1], "=", matrixes[2])
