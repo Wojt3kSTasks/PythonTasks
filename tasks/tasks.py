@@ -265,6 +265,9 @@ def exerciseMUTANT():
     print("Sums of ASCI codes of random generated strings:", calculateSumOfASCICodes())
 
 
+# Write a Python program adding two matrixes MxN . You specify the size of matrixes by giving
+# the size of M and N. All the elements in the matrix must be randomly generated from the range (1,14). Calculate the
+# time of execution your code using module time
 def exercise19Basic():
     print("Specify sizes of matrixes you want to add")
     print("Enter M:")
