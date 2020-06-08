@@ -1,5 +1,6 @@
 import random
 import numpy
+import pandas as asiaLubiPandy
 
 
 # Evaluate the quadratic equation for a given a, b, and c
@@ -370,3 +371,33 @@ def numPy7():
     matrix = numpy.random.randint(14, size=(m, n))
     sumOfDiagonalElement = numpy.trace(matrix)
     print(matrix, "\nsum of the diagonal element =", sumOfDiagonalElement)
+
+
+# 1: Z podanego zestawu danych wydrukuj 5 pierwszych i 5 ostatni wierszy
+def pandas1():
+    carsData = asiaLubiPandy.read_csv("Cars_data.csv")
+    firsAndLast5Rows = [carsData[0:5], carsData[len(carsData) - 5:len(carsData)]]
+    print(asiaLubiPandy.concat(firsAndLast5Rows))
+
+
+# 2 Znajdź najbardziej drogą markę samochodu
+def pandas2():
+    print(asiaLubiPandy.read_csv("Cars_data.csv").sort_values("price", ascending=False)[["company", "price"]].head(1))
+
+
+# 3 Pokaż wszystkie szczegóły dla samochodów marki toyota
+def pandas3():
+    carsData = asiaLubiPandy.read_csv("Cars_data.csv")
+    print(carsData[carsData["company"] == "toyota"])
+
+
+# 4 Policz całkowitą liczbę samochodów danej marki
+def pandas4():
+    print(asiaLubiPandy.read_csv("Cars_data.csv").groupby("company").size().sort_values(ascending=False))
+
+
+# 5 Znajdź dla każdej marki najdroższy samochód
+def pandas5():
+    print(asiaLubiPandy.read_csv("Cars_data.csv")[["company", "price"]].groupby("company").max())
+
+
