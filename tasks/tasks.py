@@ -1,4 +1,5 @@
 import random
+import numpy
 
 
 # Evaluate the quadratic equation for a given a, b, and c
@@ -291,3 +292,16 @@ def exercise19Basic():
         matrix.append(row)
     matrixes.append(matrix)
     print(matrixes[0], "+", matrixes[1], "=", matrixes[2])
+
+def exercise19():
+    print("Specify sizes of matrixes you want to add")
+    print("Enter M:")
+    m = int(input())
+    print("Enter N:")
+    n = int(input())
+    matrix1 = numpy.random.randint(14, size=(m, n))
+    matrix2 = numpy.random.randint(14, size=(m, n))
+    resultMatrix = numpy.add(matrix1, matrix2)
+    print(matrix1, "+", matrix2, "=", resultMatrix, sep="\n")
+
+exercise19()
