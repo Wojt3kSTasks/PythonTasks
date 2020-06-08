@@ -293,6 +293,8 @@ def exercise19Basic():
     matrixes.append(matrix)
     print(matrixes[0], "+", matrixes[1], "=", matrixes[2])
 
+
+# Write the same program as Exercise 19 basic but utilizing python module numpy
 def exercise19():
     print("Specify sizes of matrixes you want to add")
     print("Enter M:")
@@ -304,4 +306,67 @@ def exercise19():
     resultMatrix = numpy.add(matrix1, matrix2)
     print(matrix1, "+", matrix2, "=", resultMatrix, sep="\n")
 
-exercise19()
+
+# Napisz program NumPy#1, aby obliczyć mnożenie dwóch podanych macierzy
+def numPy1():
+    m = 5
+    n = 5
+    matrix1 = numpy.random.randint(14, size=(m, n))
+    matrix2 = numpy.random.randint(14, size=(m, n))
+    resultMatrix = numpy.matmul(matrix1, matrix2)
+    print(matrix1, "x", matrix2, "=", resultMatrix, sep="\n")
+
+
+# Napisz program NumPy#2, aby obliczyć iloczyn zewnętrzny dwóch podanych wektorów
+def numPy2():
+    m = 5
+    vector1 = numpy.random.randint(14, size=(m))
+    vector2 = numpy.random.randint(14, size=(m))
+    resultVector = numpy.outer(vector1, vector2)
+    print(vector1, "*", vector2, "=\n", resultVector)
+
+
+# Napisz program NumPy#3, aby obliczyć iloczyn krzyżowy dwóch podanych wektorów.
+def numPy3():
+    m = 3
+    vector1 = numpy.random.randint(14, size=(m))
+    vector2 = numpy.random.randint(14, size=(m))
+    resultVector = numpy.cross(vector1, vector2)
+    print(vector1, "x", vector2, "=", resultVector)
+
+
+# Napisz program NumPy#4, aby obliczyć wyznacznik danej macierzy kwadratowej.
+def numPy4():
+    m = 2
+    n = 2
+    matrix = numpy.random.randint(14, size=(m, n))
+    det = round(numpy.linalg.det(matrix), 2)
+    print("det\n", matrix, "\n=", det)
+
+
+# Napisz program NumPy#5, aby obliczyć iloczyn Kroneckera dwóch podanych macierzy wielowymiarowych
+def numPy5():
+    m = 2
+    n = 2
+    matrix1 = numpy.random.randint(14, size=(m, n))
+    matrix2 = numpy.random.randint(14, size=(m, n))
+    resultMatrix = numpy.kron(matrix1, matrix2)
+    print(matrix1, "⊗", matrix2, "=", resultMatrix, sep="\n")
+
+
+# Napisz program NumPy#6, aby obliczyć odwrotność danej macierzy
+def numPy6():
+    m = 2
+    n = 2
+    matrix = numpy.random.randint(14, size=(m, n))
+    inversedMatrix = numpy.linalg.inv(matrix)
+    print(matrix, "^-1\n=", inversedMatrix)
+
+
+# Napisz program NumPy#7, aby obliczyć sumę elementu ukośnego danej macierzy
+def numPy7():
+    m = 2
+    n = 2
+    matrix = numpy.random.randint(14, size=(m, n))
+    sumOfDiagonalElement = numpy.trace(matrix)
+    print(matrix, "\nsum of the diagonal element =", sumOfDiagonalElement)
